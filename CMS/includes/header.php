@@ -29,7 +29,7 @@
 				?>
 				
 				<li><a href="contact.php">Contacts Us</a></li>
-				<li><a href="#">Log Out</a></li>
+				<li><a href="register.php">Register</a></li>
 			</ul>
 		</div>
 	</header>
