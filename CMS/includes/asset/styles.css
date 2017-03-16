@@ -1,0 +1,8 @@
+@font-face {
+  font-family: 'blackSand';
+  src: url('../font/BlackSand.otf');
+}
+
+.social-icon{
+	margin-top: 15px;
+}
