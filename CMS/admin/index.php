@@ -124,6 +124,79 @@ include '../includes/db.php';
 		<div class="clearfix"></div>
 
 		<!---Top Block end-->
+		<!--- Users Area -->
+		<div class="col-lg-6">
+			<div class="panel panel-primary">
+				<div class="panel-heading">
+					<h4>Users List</h4>
+				</div>
+				<div class="panel-body">
+					<table class="table table-striped">
+						<thead>
+							<tr>
+								<th>S.NO</th>
+								<th>Name</th>
+								<th>Role</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td>1</td>
+								<td>King Bob</td>
+								<td>Admin</td>
+							</tr>
+							<tr>
+								<td>2</td>
+								<td>Bob</td>
+								<td>Smod</td>
+							</tr>
+							<tr>
+								<td>3</td>
+								<td>J Bob</td>
+								<td>Admin</td>
+							</tr>
+							<tr>
+								<td>4</td>
+								<td>KBob</td>
+								<td>Smod</td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+			</div>	
+		</div>
+
+		<div class="col-lg-6">
+			<div class="panel panel-primary">
+				<div class="panel-heading">
+					<h4>Profile</h4>
+				</div>
+				<div class="panel-body">
+					<table class="table table-striped">
+						<thead>
+							<tr>
+								<th>S.NO</th>
+								<th>Name</th>
+								<th>Role</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td>1</td>
+								<td>King Bob</td>
+								<td>Admin</td>
+							</tr>
+							<tr>
+								<td>2</td>
+								<td>Bob</td>
+								<td>Smod</td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+			</div>	
+		</div>
+		<div class="clearfix"></div>
 		<!-- Post Line starts-->
 
 		<div class="panel panel-default">
@@ -133,7 +206,7 @@ include '../includes/db.php';
 						<thead>
 							<tr>
 								<th>S.No</th>
-								<th>Date</th>
+								<th>Date</th>								
 								<th>Image</th>
 								<th>Title</th>
 								<th>Description</th>
@@ -192,10 +265,11 @@ include '../includes/db.php';
 						<thead>
 							<tr>
 								<th>S.No</th>
-								<th>Date</th>								
-								<th>Title</th>
-								<th>Description</th>
+								<th>Date</th>
 								<th>Author</th>
+								<th>Email</th>
+								<th>Post</th>
+								<th>Comment</th>
 							</tr>
 						</thead>
 						<tbody>
