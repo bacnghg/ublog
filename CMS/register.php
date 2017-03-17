@@ -38,7 +38,10 @@
 							</div>
 						</div>
 					 ';
-					  header("Location: index.php");
+					  if($_SESSION['timeout'] + 5 < time()){
+					  	header("Location: index.php");
+					  }
+					  
 					} else{
 						echo '
 						<div class="container">
