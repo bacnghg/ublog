@@ -14,25 +14,25 @@
 						</div>
 					</div>
 				</form>
-				<form action="" class="panel-group form-horizontal" role="form">
+				<form action="accounts/login.php" method="post" class="panel-group form-horizontal" role="form">
 					<div class="panel panel-default">
 						<div class="panel-heading">Login Area</div>
 						<div class="panel-body">					
 							<div class="form-group">
 								<label for="username" class="control-label col-sm-4">User Name</label>
 								<div class="col-sm-7">
-									<input type="text" id="username" placeholder="Input Username" class="form-control">
+									<input type="text" id="username" placeholder="Input Username" class="form-control" name="user_name">
 								</div>
 							</div>
 							<div class="form-group">
 								<label for="password" class="control-label col-sm-4">Password</label>
 								<div class="col-sm-7">
-									<input type="password" id="password" class="form-control" placeholder="Password" >
+									<input type="password" id="password" class="form-control" placeholder="Password" name="password" >
 								</div>
 							</div>
 							<div class="form-group">
 								<div class="col-sm-4">
-									<input type="submit" class="btn btn-success btn-block" >
+									<input type="submit" class="btn btn-success btn-block" name="submit_login" >
 								</div>
 							</div>
 						</div>

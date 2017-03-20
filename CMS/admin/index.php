@@ -12,32 +12,10 @@ include '../includes/db.php';
 	
 </head>
 <body>
-	<header id="header" class="navbar navbar-default navbar-static-top">
-		<div class="container">
-			<a href="index.php" class="navbar-brand">CMS System</a>
-			<ul class="nav navbar-nav navbar-right">
-				<li><a href="index.php">Home</a></li>
-				<li><a href="">Log Out</a></li>
-			</ul>
-		</div>		
-	</header><!-- /header -->
+	<?php include "includes/header.php";?>
 	<!--<div style="width:50px; height:50px"></div> -->
-	<div class="col-lg-2">
-		<ul class="navbar navbar-default nav" style="height:650px">
-			<li><a href="#"><i class="glyphicon glyphicon-dashboard"></i> Dashboard</a></li>
-			<li><a href="#new-items" data-toggle="collapse"><i class="glyphicon glyphicon-plus"></i> New Items</a>
-				<ul class="nav collapse" id="new-items">
-					<li><a href="#"><div class="col-sm-1"></div><i class="glyphicon glyphicon-pencil"></i> New Post</a></li>
-					<li><a href="#"><div class="col-sm-1"></div><i class="glyphicon glyphicon-edit"></i> New Category</a></li>
-				</ul>
-			</li>
-			<li><a href="#"><i class="glyphicon glyphicon-list"></i> Post</a></li>
-			<li><a href="#"><i class="glyphicon glyphicon-tasks"></i> Categories</a></li>
-			<li><a href="#"><i class="glyphicon glyphicon-comment"></i> Comments</a></li>
-			<li><a href="#"><i class="glyphicon glyphicon-user"></i> Profile</a></li>
-		</ul>
-	</div>
-
+	
+	<?php include "includes/sidebar.php"; ?>
 	<div class="col-lg-10">
 		<div class="col-md-3">
 			<div class="panel panel-danger">
@@ -125,7 +103,7 @@ include '../includes/db.php';
 
 		<!---Top Block end-->
 		<!--- Users Area -->
-		<div class="col-lg-6">
+		<div class="col-lg-8">
 			<div class="panel panel-primary">
 				<div class="panel-heading">
 					<h4>Users List</h4>
@@ -160,41 +138,52 @@ include '../includes/db.php';
 								<td>KBob</td>
 								<td>Smod</td>
 							</tr>
-						</tbody>
-					</table>
-				</div>
-			</div>	
-		</div>
-
-		<div class="col-lg-6">
-			<div class="panel panel-primary">
-				<div class="panel-heading">
-					<h4>Profile</h4>
-				</div>
-				<div class="panel-body">
-					<table class="table table-striped">
-						<thead>
 							<tr>
-								<th>S.NO</th>
-								<th>Name</th>
-								<th>Role</th>
-							</tr>
-						</thead>
-						<tbody>
-							<tr>
-								<td>1</td>
-								<td>King Bob</td>
-								<td>Admin</td>
-							</tr>
-							<tr>
-								<td>2</td>
-								<td>Bob</td>
+								<td>5</td>
+								<td>KBob</td>
 								<td>Smod</td>
 							</tr>
 						</tbody>
 					</table>
 				</div>
 			</div>	
+		</div>
+
+		<div class="col-lg-4">
+			<div class="panel panel-primary">
+				<div class="panel-heading">
+					<div class="col-md-7">
+						<div class="page-header">
+								<h4>Bob</h4>	
+						</div>
+					</div>
+					<div class="col-md8">
+						<img src="../images/bob.jpg" width="35%"" class="img-circle">
+					</div>
+					<div class="panel-body">
+						<table class="table table-condensed">
+							<tbody>
+								<tr>
+									<th>Jobs</th>
+									<td>Developer</td>
+								</tr>
+								<tr>
+									<th>Email</th>
+									<td>bob@gmail.com</td>
+								</tr>
+								<tr>
+									<th>Mobile</th>
+									<td>12345</td>
+								</tr>
+								<tr>
+									<th>Contry</th>
+									<td>Vietnam</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+					</div>
+				</div>	
 		</div>
 		<div class="clearfix"></div>
 		<!-- Post Line starts-->
@@ -259,7 +248,7 @@ include '../includes/db.php';
 				</div>
 			</div>
 			<div class="panel panel-default">
-			<div class="panel-heading">Lastest Posts</div>
+			<div class="panel-heading">Lastest Comments</div>
 				<div class="panel-body">
 					<table class="table table-striped">
 						<thead>
