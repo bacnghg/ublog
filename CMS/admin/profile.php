@@ -1,5 +1,34 @@
-<?php 
-include '../includes/db.php';
+<?php	session_start();
+	include '../includes/db.php';
+	if(isset($_SESSION['user']) && isset($_SESSION['password']) == true){
+		$sel_sql = "SELECT * FROM users WHERE user_email = '$_SESSION[user]' AND user_password = '$_SESSION[password]'";
+		if($run_sql = mysqli_query($conn, $sel_sql)){
+			while($rows = mysqli_fetch_assoc($run_sql)){
+				$user_f_name = $rows['user_f_name'];
+				$user_l_name = $rows['user_l_name'];
+				$user_gender = $rows['user_gender'];
+				$user_marital_status = $rows['user_marital_status'];
+				$user_email = $rows['user_email'];
+				$user_mobile = $rows['user_mobile'];
+				$user_designation = $rows['user_designation'];
+				$user_website = $rows['user_website'];
+				$user_address = $rows['user_address'];
+				$user_about_me = $rows['user_about_me'];
+				if(mysqli_num_rows($run_sql) == 1){
+					if($rows['role'] == 'admin'){
+
+					} else {
+						header('Location:../index.php');
+					}
+				} else{
+					header('Location:../index.php');
+				}
+			}
+			
+		}
+	} else{
+		header('Location:../index.php');
+	}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -28,11 +57,11 @@ include '../includes/db.php';
 						<img src="../images/bob.jpg" width="100%"" class="img-thumbnail">
 					</div>
 					<div class="col-md-7">
-						<h3><u>King Bob</u></h3>
-						<p><i class="glyphicon glyphicon-heart"></i>	Web Developer</p>
-						<p><i class="glyphicon glyphicon-road"></i> 	Hai Ba Trung street, Ha Noi</p>
-						<p><i class="glyphicon glyphicon-phone"></i> 	0985641269</p>
-						<p><i class="glyphicon glyphicon-envelope"></i> 	nhb.fit.hut@gmail.com</p>
+						<h3><u><?php echo $user_f_name . ' ' . $user_l_name; ?></u></h3>
+						<p><i class="glyphicon glyphicon-heart"></i>	<?php echo $user_designation;?></p>
+						<p><i class="glyphicon glyphicon-road"></i> 	<?php echo $user_address; ?></p>
+						<p><i class="glyphicon glyphicon-phone"></i> 	<?php echo $user_mobile; ?></p>
+						<p><i class="glyphicon glyphicon-envelope"></i> 	<?php echo $_SESSION['user'];?></p>
 					</div>
 					<div class="clearfix"></div>
 				</div>
@@ -46,15 +75,15 @@ include '../includes/db.php';
 						<tbody>
 							<tr>
 								<th>Gender</th>
-								<td>Male</td>
+								<td><?php echo ucfirst($user_gender);?></td>
 							</tr>
 							<tr>
 								<th>Marital Status</th>
-								<td>Single</td>
+								<td><?php echo ucfirst($user_marital_status); ?></td>
 							</tr>
 							<tr>
 								<th>Offical Website</th>
-								<td>abc.com.vn</td>
+								<td><?php echo ucfirst($user_website);?></td>
 							</tr>
 						</tbody>
 					</table>
@@ -90,7 +119,7 @@ include '../includes/db.php';
 			<div class="panel panel-default">
 				<div class="panel-heading">
 					<h4>About me</h4>
-					<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillu...</p>
+					<p><?php echo ucfirst($user_about_me);?></p>
 				</div>
 			</div>
 		</div>

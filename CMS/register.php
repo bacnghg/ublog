@@ -3,7 +3,7 @@
 	if(isset($_POST['submit_register'])){
 		if($_POST['password'] == $_POST['con_password']){
 		$date = date('Y-m-d h:i:s');
-		$ins_sql = "INSERT INTO users (user_f_name, user_l_name, user_email, user_password, user_gender, user_marital_status, user_mobile, user_designation, user_website, user_address, user_about_me, user_date) VALUES('$_POST[first_name]', '$_POST[last_name]', '$_POST[email]', '$_POST[password]', '$_POST[gender]', '$_POST[marital_status]', '$_POST[mobile]', '$_POST[designation]', '$_POST[website]', '$_POST[address]', '$_POST[about_me]', '$date')";
+		$ins_sql = "INSERT INTO users (role, user_f_name, user_l_name, user_email, user_password, user_gender, user_marital_status, user_mobile, user_designation, user_website, user_address, user_about_me, user_date) VALUES('subscriber','$_POST[first_name]', '$_POST[last_name]', '$_POST[email]', '$_POST[password]', '$_POST[gender]', '$_POST[marital_status]', '$_POST[mobile]', '$_POST[designation]', '$_POST[website]', '$_POST[address]', '$_POST[about_me]', '$date')";
 		$run_sql = mysqli_query($conn, $ins_sql);			
 	} else {
 		$match = '<div class="alert alert-danger">Password doesn&apos;t match! </div>';

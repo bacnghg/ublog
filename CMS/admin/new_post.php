@@ -1,4 +1,51 @@
-<?php include "../includes/db.php"; ?>
+<?php	session_start();
+	include '../includes/db.php';
+	if(isset($_SESSION['user']) && isset($_SESSION['password']) == true){
+		$sel_sql = "SELECT * FROM users WHERE user_email = '$_SESSION[user]' AND user_password = '$_SESSION[password]'";
+		if($run_sql = mysqli_query($conn, $sel_sql)){
+			if(mysqli_num_rows($run_sql) == 1){
+
+			} else{
+				header('Location:../index.php');
+			}
+		}
+	} else{
+		header('Location:../index.php');
+	}
+	$error = 'text';
+	if(isset($_POST['submit_post'])){
+		$title = strip_tags($_POST['title']);
+		$date = date('Y-m-d h:i:s');
+		if(isset($_FILES['image'])){
+			$image_name = $_FILES['image']['name'];
+			$image_tmp = $_FILES['image']['temp_name'];
+			$image_size = $_FILES['image']['size'];
+			$image_ext = pathinfo($image_name, PATHINFO_EXTENSION);
+			$image_path = '../images/'.$image_name;
+			$image_db_path = 'images/'.$image_name;
+
+			if($image_size < 1000000){
+				if($image_ext == 'jpg' || $image_ext = 'png' || $image_ext == 'gif'){
+					if(move_uploaded_file($image_tmp, $image_path)){
+						$ins_sql = "INSERT INTO post (title, description, image, category, date, author) VALUES ('$title', '$_POST[description]', 'image_db_path', '$_POST[category]', '$date', '$_SESSION[user]')";
+						if(mysqli_query($conn, $ins_sql)){
+							header('post_list.php');
+
+						} else{
+							$error =  '<div class="alert alert-danger">"The Querry was not working"</div>';
+						}
+					} else{
+						$error = '<div class="alert alert-danger">"Sorry, Unfortunately Image hos not been uploaded!"</div>';
+					}
+				} else {
+					$error = '<div class="alert alert-danger">"Image Format was not Correct!"</div>';
+				}
+			} else {
+				$error = '<div class="alert alert-danger">"Image File Size is much bigger then Expect!"</div>';
+			}
+		}
+	}
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -12,7 +59,8 @@
 </head>
 <body>
 	<?php include "includes/header.php"; ?>
-	<?php include "includes/sidebar.php"; ?>
+
+	<?php echo $error; include "includes/sidebar.php"; ?>
 	<div class="col-lg-10">
 		<div style="width:50px; height: 50px;"></div>
 		<div class="page-header"><h1>New Post</h1></div>
@@ -20,7 +68,7 @@
 			<form action="new_post.php" class="form-horizontal" method="post" enctype="multipard/form-data">
 				<div class="form-group">
 					<label for="title">Title</label>
-					<input type="title" id="title" class="form-control">
+					<input type="title" id="title" class="form-control" required>
 				</div>
 				<div class="form-group">
 					<label for="image">Upload Image</label>
@@ -28,22 +76,30 @@
 				</div>
 				<div class="form-group">
 					<label for="category">Category</label>
-					<select name="category" id="category" class="form-control">
-						<option value=""></option>
-						<option value="nature">Nature</option>
-						<option value="minion">Minion</option>
+					<select name="category" id="category" class="form-control" required>
+						<option value="">Select any Category</option>
+						<?php
+							$sel_sql = "SELECT * FROM category";
+							$run_sql = mysqli_query($conn, $sel_sql);
+							while($rows = mysqli_fetch_assoc($run_sql)){
+								if($rows['category_name'] == 'home'){
+									continue;
+								}
+								echo '<option value="' .$rows['category_name'].'">'. ucfirst($rows['category_name']).'</option>';
+							}
+						?>
 					</select>
 				</div>
 				<div class="form-group">
 					<label for="description">Description</label>
-					<textarea id="description" name="description">Check out</textarea>
+					<textarea id="description" name="description" required>Check out</textarea>
 				</div>
 				<div class="form-group">
 					<label for="status">Status</label>
 					<select name="status" id="status" class="form-control">
 						<option value=""></option>
-						<option value="publish">Publish</option>
 						<option value="draft">Draft</option>
+						<option value="publish">Publish</option>
 					</select>
 				</div>
 				<div class="form-group">

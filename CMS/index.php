@@ -1,3 +1,16 @@
+<?php session_start();
+include '../includes/db.php';
+$login_err = '';
+if(isset($_GET['login_error'])){
+	if($_GET['login_error'] == 'empty'){
+		$login_err = '<div class="alert alert-danger"> User name or Password was Empty!</div>';
+	} elseif($_GET['login_error'] == 'wrong'){
+		$login_err = '<div class="alert alert-danger"> User name or Password was Wrong!</div>';
+	} elseif($_GET['login_error'] == 'query_error'){
+		$login_err = '<div class="alert alert-danger"> There is somekind of Database Issue!</div>';
+	}
+}
+?>
 <?php 
 	include 'includes/db.php';
 ?>
@@ -16,6 +29,7 @@
 		include 'includes/header.php';
 	?>
 	<div class="container">
+		<?php echo $login_err; ?>
 		<article class="row">
 			<section class="col-lg-8">
 			<?php

@@ -1,5 +1,17 @@
-<?php 
-include '../includes/db.php';
+<?php	session_start();
+	include '../includes/db.php';
+	if(isset($_SESSION['user']) && isset($_SESSION['password']) == true){
+		$sel_sql = "SELECT * FROM users WHERE user_email = '$_SESSION[user]' AND user_password = '$_SESSION[password]'";
+		if($run_sql = mysqli_query($conn, $sel_sql)){
+			if(mysqli_num_rows($run_sql) == 1){
+
+			} else{
+				header('Location:../index.php');
+			}
+		}
+	} else{
+		header('Location:../index.php');
+	}
 ?>
 <!DOCTYPE html>
 <html lang="en">

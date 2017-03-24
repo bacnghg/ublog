@@ -10,6 +10,6 @@
 			<li><a href="post_list.php"><i class="glyphicon glyphicon-list"></i> Post</a></li>
 			<li><a href="category_list.php"><i class="glyphicon glyphicon-tasks"></i> Categories</a></li>
 			<li><a href="comment_list.php"><i class="glyphicon glyphicon-comment"></i> Comments</a></li>
-			<li><a href="#"><i class="glyphicon glyphicon-user"></i> Profile</a></li>
+			<li><a href="profile.php"><i class="glyphicon glyphicon-user"></i> Profile</a></li>
 		</ul>
 	</div>
